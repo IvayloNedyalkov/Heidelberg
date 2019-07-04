@@ -5,24 +5,28 @@
  <Description>Продажби и консигнации</Description>
  <Type>ПА Ангел Груп</Type>
  <DatabaseType>-1</DatabaseType>
- <SQL>SELECT o.date as [Дата], p.Company as [Фирма], p.Company2, p.Phone, p.Address as [Адрес на Обекта], p.City as [Град на Обекта], 
- CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Дадена машина',
- CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'Сериен номер на машина',
- CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка дадена машина',
- CASE o.OperType WHEN 17 then g.Name ELSE '' END AS 'Върната машина',
- CASE o.OperType WHEN 17 then o.Note ELSE '' END AS 'Забележка Върната машина',
- CASE o.OperType WHEN 2 then g.Name ELSE '' END AS 'Продажба', 
- CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice2, 
- SUM(o.QTTY) as [Ко-во], SUM(o.PriceIN*o.QTTY) AS delevery, 
- CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win1,
- CASE o.OperType WHEN 15 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win2 
-FROM Operations o
-LEFT JOIN Partners p ON p.ID=o.PartnerID
-LEFT JOIN Goods g ON g.ID=o.GoodID
-LEFT JOIN Objects ob ON ob.ID=o.ObjectID
-WHERE o.OperType in (2,15,17) $datata $imenapartner $imenaobekt 
-Group BY o.date,p.Company,o.OperType,g.Name,p.Address, p.City, p.Company2, p.Phone, o.Note, g.Catalog1    
-Order by o.OperType DESC
+ <SQL>SELECT o.date as [Дата], 
+			 p.Company as [Фирма], 
+			 p.Company2, p.Phone, 
+			 p.Address as [Адрес на Обекта], 
+			 p.City as [Град на Обекта], 
+			 CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Дадена машина',
+			 CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'Сериен номер на машина',
+			 CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка дадена машина',
+			 CASE o.OperType WHEN 17 then g.Name ELSE '' END AS 'Върната машина',
+			 CASE o.OperType WHEN 17 then o.Note ELSE '' END AS 'Забележка Върната машина',
+			 CASE o.OperType WHEN 2 then g.Name ELSE '' END AS 'Продажба', 
+			 CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice2, 
+			 SUM(o.QTTY) as [Ко-во], SUM(o.PriceIN*o.QTTY) AS delevery, 
+			 CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win1,
+			 CASE o.OperType WHEN 15 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win2 
+	 FROM Operations o
+	 LEFT JOIN Partners p ON p.ID=o.PartnerID
+	 LEFT JOIN Goods g ON g.ID=o.GoodID
+	 LEFT JOIN Objects ob ON ob.ID=o.ObjectID
+	 WHERE o.OperType in (2,15,17) $datata $imenapartner $imenaobekt 
+	 Group BY o.date,p.Company,o.OperType,g.Name,p.Address, p.City, p.Company2, p.Phone, o.Note, g.Catalog1    
+	 Order by o.OperType DESC
  </SQL>
 <Component>
 	<Name>datata</Name>
@@ -69,7 +73,7 @@ Order by o.OperType DESC
   <IsSumColumn>True</IsSumColumn>
   <NullText></NullText>
   </Column>
-    <Column>
+  <Column>
   <Name>win2</Name>
   <Caption>Печалба Конси.</Caption>
   <Aligment>0</Aligment>
