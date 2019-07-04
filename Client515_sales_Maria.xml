@@ -5,7 +5,7 @@
  <Description>Продажби и консигнации</Description>
  <Type>ПА Ангел Груп</Type>
  <DatabaseType>-1</DatabaseType>
- <SQL>SELECT o.date as [Дата], p.Company as [Фирма], p.Company2, p.Phone, p.Address as [Адрес на Обекта], p.City as [Град], 
+ <SQL>SELECT o.date as [Дата], p.Company as [Фирма], p.Company2, p.Phone, p.Address as [Адрес на Обекта], p.City as [Град на Обекта], 
  CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Консигнация',
  CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'каталог Дадена',
  CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка Конси.',
