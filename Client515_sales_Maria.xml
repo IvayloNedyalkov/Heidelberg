@@ -6,14 +6,11 @@
  <Type>ПА Ангел Груп</Type>
  <DatabaseType>-1</DatabaseType>
  <SQL>SELECT o.date as [Дата], p.Company as [Фирма], p.Company2, p.Phone, p.Address as [Адрес на Обекта], p.City as [Град на Обекта], 
- CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Консигнация',
- CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'каталог Дадена',
- CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка Конси.',
- CASE o.OperType WHEN 15 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice,
- CASE o.OperType WHEN 17 then g.Name ELSE '' END AS 'Върната Конси.',
- CASE o.OperType WHEN 17 then g.Catalog1 ELSE '' END AS 'каталог Върната',
- CASE o.OperType WHEN 17 then o.Note ELSE '' END AS 'Забележка Върната',
- CASE o.OperType WHEN 17 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice1, 
+ CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Дадена машина',
+ CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'Сериен номер на машина',
+ CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка дадена машина',
+ CASE o.OperType WHEN 17 then g.Name ELSE '' END AS 'Върната машина',
+ CASE o.OperType WHEN 17 then o.Note ELSE '' END AS 'Забележка Върната машина',
  CASE o.OperType WHEN 2 then g.Name ELSE '' END AS 'Продажба', 
  CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice2, 
  SUM(o.QTTY) as [Ко-во], SUM(o.PriceIN*o.QTTY) AS delevery, 
@@ -48,22 +45,6 @@ Order by o.OperType DESC
 	<Expression1>AND ob.Name LIKE '@%'</Expression1>
 	<Expression2></Expression2>
  </Component>
-  <Column>
-  <Name>saleprice</Name>
-  <Caption>Прод. Цена Консигнация</Caption>
-  <Aligment>0</Aligment>
-  <Format>0.00</Format>
-  <IsSumColumn>True</IsSumColumn>
-  <NullText></NullText>
-  </Column>
-  <Column>
-  <Name>saleprice1</Name>
-  <Caption>Прод. Цена Върната Конси.</Caption>
-  <Aligment>0</Aligment>
-  <Format>0.00</Format>
-  <IsSumColumn>True</IsSumColumn>
-  <NullText></NullText>
-  </Column>
   <Column>
   <Name>saleprice2</Name>
   <Caption>Прод. Цена</Caption>
