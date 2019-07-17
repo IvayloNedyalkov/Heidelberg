@@ -1,0 +1,9 @@
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\bin\Debug\PhoneBookUdemy.exe
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\bin\Debug\PhoneBookUdemy.pdb
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.csprojAssemblyReference.cache
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.Form1.resources
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.Properties.Resources.resources
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.csproj.GenerateResource.cache
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.csproj.CoreCompileInputs.cache
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.exe
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.pdb
