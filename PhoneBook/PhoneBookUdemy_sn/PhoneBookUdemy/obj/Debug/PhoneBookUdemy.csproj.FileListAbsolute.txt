@@ -7,3 +7,4 @@ G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneB
 G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.csproj.CoreCompileInputs.cache
 G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.exe
 G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\obj\Debug\PhoneBookUdemy.pdb
+G:\Heidelberg Cement\PhoneBook\PhoneBookUdemy_sn\PhoneBookUdemy\bin\Debug\PhoneBookUdemy.exe.config
