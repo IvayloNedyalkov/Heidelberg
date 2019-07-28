@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Report>
+ <Caption>Продажби и консигнации</Caption>
+ <ReportCaption>Продажби и консигнации</ReportCaption>
+ <Description>Продажби и консигнации</Description>
+ <Type>ПА Ангел Груп</Type>
+ <DatabaseType>-1</DatabaseType>
+ <SQL>SELECT o.date as [Дата], p.Company, p.Company2, p.Phone, p.Address as [Адрес], p.City as [Град], 
+ CASE o.OperType WHEN 15 then g.Name ELSE '' END AS 'Консигнация',
+ CASE o.OperType WHEN 15 then g.Catalog1 ELSE '' END AS 'каталог Дадена',
+ CASE o.OperType WHEN 15 then o.Note ELSE '' END AS 'Забележка Конси.',
+ CASE o.OperType WHEN 15 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice,
+ CASE o.OperType WHEN 17 then g.Name ELSE '' END AS 'Върната Конси.',
+ CASE o.OperType WHEN 17 then g.Catalog1 ELSE '' END AS 'каталог Върната',
+ CASE o.OperType WHEN 17 then o.Note ELSE '' END AS 'Забележка Върната',
+ CASE o.OperType WHEN 17 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice1, 
+ CASE o.OperType WHEN 2 then g.Name ELSE '' END AS 'Продажба', 
+ CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY) ELSE '' END AS saleprice2, 
+ SUM(o.QTTY) as [Ко-во], SUM(o.PriceIN*o.QTTY) AS delevery, 
+ CASE o.OperType WHEN 2 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win1,
+ CASE o.OperType WHEN 15 then SUM(o.PriceOUT*o.QTTY)-SUM(o.PriceIN*o.QTTY) ELSE '' END AS win2 
+FROM Operations o
+LEFT JOIN Partners p ON p.ID=o.PartnerID
+LEFT JOIN Goods g ON g.ID=o.GoodID
+LEFT JOIN Objects ob ON ob.ID=o.ObjectID
+WHERE o.OperType in (2,15,17) $datata $imenapartner $imenaobekt 
+Group BY o.date,p.Company,o.OperType,g.Name,p.Address, p.City, p.Company2, p.Phone, o.Note, g.Catalog1    
+Order by o.OperType
+ </SQL>
+<Component>
+	<Name>datata</Name>
+	<Caption>Дата</Caption>
+	<Type>5</Type>
+	<Expression1>AND o.date &gt;= @</Expression1>
+	<Expression2>AND o.date &lt;= @</Expression2>
+ </Component> 
+ <Component>
+	<Name>imenapartner</Name>
+	<Caption>^strPartner^</Caption>
+	<Type>10</Type>
+	<Expression1>AND p.Company LIKE '@%'</Expression1>
+	<Expression2></Expression2>
+ </Component>
+ <Component>
+	<Name>imenaobekt</Name>
+	<Caption>^strObject^</Caption>
+	<Type>19</Type>
+	<Expression1>AND ob.Name LIKE '@%'</Expression1>
+	<Expression2></Expression2>
+ </Component>
+  <Column>
+  <Name>saleprice</Name>
+  <Caption>Прод. Цена Консигнация</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+  <Column>
+  <Name>saleprice1</Name>
+  <Caption>Прод. Цена Върната Конси.</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+  <Column>
+  <Name>saleprice2</Name>
+  <Caption>Прод. Цена</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+  <Column>
+  <Name>delevery</Name>
+  <Caption>Доставна Цена</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+  <Column>
+  <Name>win1</Name>
+  <Caption>Печалба Продажби</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+    <Column>
+  <Name>win2</Name>
+  <Caption>Печалба Конси.</Caption>
+  <Aligment>0</Aligment>
+  <Format>0.00</Format>
+  <IsSumColumn>True</IsSumColumn>
+  <NullText></NullText>
+  </Column>
+ </Report>
