@@ -48,7 +48,7 @@ namespace PhoneBookUdemy
             this.save_butt.Enabled = false;
             this.cancel_butt.Enabled = false;
 
-            //--------Enable save and cancel butt-----
+            //--------Enable new,edit and delete butt-----
             this.new_butt.Enabled = true;
             this.edit_butt.Enabled = true;
             this.delete_butt.Enabled = true;
