@@ -25,7 +25,8 @@
 	 LEFT JOIN Goods g ON g.ID=o.GoodID
 	 LEFT JOIN Objects ob ON ob.ID=o.ObjectID
 	 WHERE o.OperType in (2,15,17) $datata $imenapartner $imenaobekt 
-	 Group BY o.date,p.Company,o.OperType,g.Name,p.Address, p.City, p.Company2, p.Phone, o.Note, g.Catalog1    
+	 Group BY o.date,p.Company,o.OperType,g.Name,p.Address, p.City, p.Company2, p.Phone, o.Note, g.Catalog1 
+1	 
 	 Order by o.OperType DESC
  </SQL>
 <Component>
